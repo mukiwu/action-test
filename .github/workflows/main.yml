@@ -3,7 +3,7 @@ name: Main Release
 # on:
 #   push:
 #     tags:
-#       - 'v*.*.*'
+#       - "v*.*.*"
 
 on:
   push
@@ -14,11 +14,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Generate Changelog
         run: |
           npm i generate-changelog -g
           generate-changelog
           changelog > ${{ github.workspace }}/CHANGELOG.md
+
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
@@ -28,21 +30,7 @@ jobs:
           generate_release_notes: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-changelog:
-  exclude:
-    labels:
-      - ignore-for-release
-    authors:
-      - octocat
-  categories:
-    - title: Breaking Changes 🛠
-      labels:
-        - Semver-Major
-        - breaking-change
-    - title: Exciting New Features 🎉
-      labels:
-        - Semver-Minor
-        - enhancement
-    - title: Other Changes
-      labels:
-        - '*'
+# 引用配置文件
+jobs:
+  include:
+    - .github/release.yml
