@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate Changelog
-        run: echo "# update" > ${{ github.workspace }}-CHANGELOG.md
+        run: echo "# update" > ${{ github.repository }}-CHANGELOG.md
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
