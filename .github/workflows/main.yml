@@ -12,16 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate Changelog
-        run: echo "# update" > ${{ github.workspace }}-CHANGELOG.md
+        run: echo "# update" > ${{ github.workspace }}/CHANGELOG.md
       - name: Show Changelog
         run: cat ${{ github.workspace }}/CHANGELOG.md
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: ${{ github.workspace }}-CHANGELOG.md
+          body_path: ${{ github.workspace }}/CHANGELOG.md
           repository: mukiwu/action-test
           generate_release_notes: true
-          # note you'll typically need to create a personal access token
-          # with permissions to create releases in the other repo
           token: ${{ secrets.GITHUB_TOKEN }}
