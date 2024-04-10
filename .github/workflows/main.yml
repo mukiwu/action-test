@@ -1,0 +1,2 @@
+- name: ReleaseMe - GitHub Release Management
+  uses: dev-build-deploy/release-me@v0.16.1
