@@ -11,8 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Generate Changelog
-        run: echo "# update" > ${{ github.repository }}/CHANGELOG.md
+      # - name: Generate Changelog
+        # run: echo "# update" > ${{ github.repository }}/CHANGELOG.md
+      - name: Show Changelog
+        run: cat ${{ github.workspace }}/changelog.md
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
