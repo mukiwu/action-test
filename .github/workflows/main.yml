@@ -33,7 +33,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: mukiwu/action-test
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Action
+        uses: mukiwu/action-test
         with:
           generate_release_notes: true
