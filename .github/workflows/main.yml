@@ -5,23 +5,35 @@ on:
     tags:
       - "v*.*.*"
 
+permissions:
+  contents: write
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Generate Changelog
+#         run: echo "# Good things have arrived" > ${{ github.workspace }}-CHANGELOG.txt
+#       - name: Show Changelog
+#         run: |
+#           echo ${{ github.sha}} > CHANGELOG.md
+#           cat CHANGELOG.md
+#       - name: Release
+#         uses: softprops/action-gh-release@v2
+#         if: startsWith(github.ref, 'refs/tags/')
+#         with:
+#           body_path: ${{ github.workspace }}-CHANGELOG.txt
+#           repository: mukiwu/action-test
+#           generate_release_notes: true
+#           token: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Generate Changelog
-        run: echo "# Good things have arrived" > ${{ github.workspace }}-CHANGELOG.txt
-      - name: Show Changelog
-        run: |
-          echo ${{ github.sha}} > CHANGELOG.md
-          cat CHANGELOG.md
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+      - uses: actions/checkout@v2.4.0
+      - uses: xt0rted/action-gh-release@testing
         with:
-          body_path: ${{ github.workspace }}-CHANGELOG.txt
-          repository: mukiwu/action-test
           generate_release_notes: true
-          token: ${{ secrets.GITHUB_TOKEN }}
