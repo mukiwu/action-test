@@ -5,8 +5,7 @@ name: Main
 #     tags:
 #       - "v*.*.*"
 
-on:
-  push
+on: push
 
 jobs:
   build:
