@@ -1,11 +1,8 @@
 name: 'Generate Labels'
 
 on:
-  # pull_request:
-  #   types: [opened, edited, synchronize]
-  push:
-    tags:
-      - 'v*.*.*'
+  pull_request:
+    types: [opened, edited, synchronize]
 
 jobs:
   label:
