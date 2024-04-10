@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Generate Changelog
+        run: |
+          npm i generate-changelog -g
+          changelog > ${{ github.workspace }}/CHANGELOG.md
       # - name: Generate Changelog
       #   run: echo "# update" > ${{ github.workspace }}/CHANGELOG.md
       # - name: Show Changelog
@@ -21,7 +25,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: ${{ github.workspace }}/changelog.md
+          body_path: ${{ github.workspace }}/CHANGELOG.md
           repository: mukiwu/action-test
           generate_release_notes: true
           token: ${{ secrets.GITHUB_TOKEN }}
