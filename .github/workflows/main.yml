@@ -1,12 +1,12 @@
 name: Main Release
 
-# on:
-#   push:
-#     tags:
-#       - "v*.*.*"
-
 on:
-  push
+  push:
+    tags:
+      - "v*.*.*"
+
+# on:
+#   push
 
 jobs:
   build:
