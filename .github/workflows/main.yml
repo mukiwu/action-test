@@ -14,7 +14,7 @@ jobs:
       # - name: Generate Changelog
         # run: echo "# update" > ${{ github.repository }}/CHANGELOG.md
       - name: Show Changelog
-        run: cat ${{ github.workspace }}/changelog.md
+        run: cat ${{ github.workspace }}/CHANGELOG.md
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
