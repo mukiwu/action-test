@@ -1,12 +1,9 @@
-name: Main Release
+name: Main
 
 on:
   push:
     tags:
       - "v*.*.*"
-
-# on:
-#   push
 
 jobs:
   build:
@@ -15,11 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Generate Changelog
-        run: echo "# Good things have arrived" > ${{ github.workspace }}/CHANGELOG.txt
-        # run: |
-        #   npm i generate-changelog -g
-        #   generate-changelog
-        #   changelog > ${{ github.workspace }}/CHANGELOG.md
+        run: echo "# Good things have arrived" > ${{ github.workspace }}-CHANGELOG.txt
       - name: Show Changelog
         run: |
           echo ${{ github.sha}} > CHANGELOG.md
@@ -28,7 +21,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: ${{ github.workspace }}/CHANGELOG.md
-          repository: GoodLinker/goodlinker-admin
-          generate_release_notes: true
+          body_path: ${{ github.workspace }}-CHANGELOG.txt
+          repository: mukiwu/action-test
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repo
           token: ${{ secrets.GITHUB_TOKEN }}
