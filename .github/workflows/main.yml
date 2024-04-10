@@ -23,6 +23,5 @@ jobs:
         with:
           body_path: ${{ github.workspace }}-CHANGELOG.txt
           repository: mukiwu/action-test
-          # note you'll typically need to create a personal access token
-          # with permissions to create releases in the other repo
+          generate_release_notes: true
           token: ${{ secrets.GITHUB_TOKEN }}
