@@ -14,7 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # - name: Generate Changelog
+      - name: Generate Changelog
+        run: echo "# Good things have arrived" > ${{ github.workspace }}/CHANGELOG.txt
         # run: |
         #   npm i generate-changelog -g
         #   generate-changelog
