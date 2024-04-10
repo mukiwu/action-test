@@ -34,6 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: xt0rted/action-gh-release@testing
+      - uses: mukiwu/action-test
         with:
           generate_release_notes: true
