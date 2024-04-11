@@ -6,17 +6,20 @@ changelog:
   categories:
     - title: 'New'
       labels:
-        - 'type: feature ✨'
+        - 'type: feature'
     - title: 'Improved'
       labels:
-        - 'type: docs 📋'
-        - 'type: style 🎨'
+        - 'type: docs'
+        - 'type: style'
+    - title: 'Refactor'
+      labels:
+        - 'type: refactor'
     - title: 'Fixed'
       labels:
-        - 'type: bug(fix) 🐞'
+        - 'type: bug(fix)'
     - title: 'Documentation'
       labels:
-        - 'type: docs 📋'
+        - 'type: docs'
     - title: 'Other Changes'
       labels:
         - '*'
